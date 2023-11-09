@@ -7,7 +7,7 @@ const { MongoParseError } = require('mongodb');
 const SECRET = process.env.SECRET || 'this is not very secure';
 
 const app = express();
-const port = 3007;
+const port = 3009;
 
 const corsConfig = {
     origin: 'http://localhost:3000',

@@ -4,7 +4,6 @@ const {User} = require('../models/db');
 const create = async (req, res) => {
 
   const { email, password } = req.body;
-  // console.log(req.body);
 
   const user = await User.findOne({ email: email });
   if (user)
@@ -18,10 +17,9 @@ const create = async (req, res) => {
       ...req.body,
       password: hash,
     });
-    console.log(hash, newUser)
+    // console.log(hash, newUser)
     const user = await newUser.save();
     req.session.uid = user._id;
-    // console.log(user)
     res.status(201).send(user);
   } catch (error) {
     console.log(error)
@@ -29,8 +27,21 @@ const create = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email: email });
+    const validatedPass = await bcrypt.compare(password, user.password);
+    if(!validatedPass) throw new Error();
+    req.session.uid = user._id;
+    res.status(200).send(user);
+  } catch (error) {
+    res
+      .status(401)
+      .send({ error: '401', message: 'Username or password is incorrect' });
+  };
+}
 
 
 
-
-module.exports = { create };
+module.exports = { create, login };
