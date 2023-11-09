@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
 const {User} = require('../models/db');
 
+
 const create = async (req, res) => {
-
   const { email, password } = req.body;
-
+  // console.log(req.body)
   const user = await User.findOne({ email: email });
   if (user)
     return res
@@ -16,8 +16,8 @@ const create = async (req, res) => {
     const newUser = new User({
       ...req.body,
       password: hash,
+      tasks: [],
     });
-    // console.log(hash, newUser)
     const user = await newUser.save();
     req.session.uid = user._id;
     res.status(201).send(user);
@@ -55,6 +55,18 @@ const logout = (req, res) => {
   })
 }
 
+const profile = async (req, res) => {
+  try {
+    const user = req.user;
+    const tasks = await user.tasks;
+    // console.log(tasks)
+    res.status(200).send(tasks);
+  } catch (error) {
+    res
+    .status(500)
+    .send({error, massage: 'Could not log tasks, please try again'});
+  }
+}
 
 
-module.exports = { create, login, logout };
+module.exports = { create, login, logout, profile };

@@ -9,15 +9,16 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
+  tasks: [{index: Number, text: String, done: Boolean}]
   });
 const User = mongoose.model('User', userSchema);
 
 //schema for task lists
-const listSchema = new mongoose.Schema({
-  id: Number,
-  tasks: [{index: Number, text: String, done: Boolean}],
-});
-const List = mongoose.model('List', listSchema);
+// const listSchema = new mongoose.Schema({
+//   id: Number,
+//   tasks: [{index: Number, text: String, done: Boolean}],
+// });
+// const List = mongoose.model('List', listSchema);
 
 
 
@@ -25,5 +26,5 @@ const List = mongoose.model('List', listSchema);
 
 
   module.exports = {
-    mongoose, User, List, userSchema
+    mongoose, User, userSchema
   };
