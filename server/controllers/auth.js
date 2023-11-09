@@ -42,6 +42,19 @@ const login = async (req, res) => {
   };
 }
 
+const logout = (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      res
+        .status(500)
+        .send({error, massage: 'Could not log out, please try again'});
+    } else {
+      res.clearCookie('sid');
+      res.status(200).send({message: 'Logout successful'});
+    }
+  })
+}
 
 
-module.exports = { create, login };
+
+module.exports = { create, login, logout };
