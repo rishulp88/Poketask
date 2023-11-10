@@ -59,7 +59,6 @@ const profile = async (req, res) => {
   try {
     const user = req.user;
     const tasks = await user.tasks;
-    // console.log(tasks)
     res.status(200).send(tasks);
   } catch (error) {
     res
