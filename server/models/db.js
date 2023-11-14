@@ -9,19 +9,10 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
+  points: Number,
   tasks: [{index: Number, text: String, done: Boolean}]
   });
 const User = mongoose.model('User', userSchema);
-
-//schema for task lists
-// const listSchema = new mongoose.Schema({
-//   id: Number,
-//   tasks: [{index: Number, text: String, done: Boolean}],
-// });
-// const List = mongoose.model('List', listSchema);
-
-
-
 
 
 

@@ -16,6 +16,7 @@ const create = async (req, res) => {
     const newUser = new User({
       ...req.body,
       password: hash,
+      points: 0,
       tasks: [],
     });
     const user = await newUser.save();
@@ -47,7 +48,7 @@ const logout = (req, res) => {
     if (error) {
       res
         .status(500)
-        .send({error, massage: 'Could not log out, please try again'});
+        .send({error, message: 'Could not log out, please try again'});
     } else {
       res.clearCookie('sid');
       res.status(200).send({message: 'Logout successful'});
@@ -63,9 +64,25 @@ const profile = async (req, res) => {
   } catch (error) {
     res
     .status(500)
-    .send({error, massage: 'Could not log tasks, please try again'});
+    .send({error, message: 'Could not log tasks, please try again'});
+  }
+}
+
+const getPoints = async (req, res) => {
+  try {
+    const user = req.user;
+    const points = [user.points];
+    console.log(points)
+    res.status(200).send(points);
+  } catch (error) {
+
+    console.log(error)
+    const status =  500;
+    res
+    .status(status)
+    .send({message: 'Could not log points, please try again'});
   }
 }
 
 
-module.exports = { create, login, logout, profile };
+module.exports = { create, login, logout, profile, getPoints };

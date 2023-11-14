@@ -14,13 +14,12 @@ const corsConfig = {
     credentials: true,
 };
 
+
 app.use(cors(corsConfig));
 app.use(bodyparser.json())
 app.use(express.json());
-// REMOVE-START
 app.use(
   session({
-    // the store property, if not specified, defaults to the in-memory store
     name: 'sid',
     saveUninitialized: false,
     resave: false,

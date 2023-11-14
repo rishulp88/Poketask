@@ -11,6 +11,8 @@ router.post('/logout', authMiddleware, userController.logout);
 router.post('/addTask', authMiddleware, taskController.add);
 router.post('/remove', authMiddleware, taskController.remove);
 router.post('/check', authMiddleware, taskController.check);
+router.get('/points', authMiddleware, userController.getPoints);
+router.post('/isChecked', authMiddleware, taskController.isChecked);
 
 
 
