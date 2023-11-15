@@ -4,7 +4,6 @@ const {User} = require('../models/db');
 
 const create = async (req, res) => {
   const { email, password } = req.body;
-  // console.log(req.body)
   const user = await User.findOne({ email: email });
   if (user)
     return res
@@ -72,7 +71,6 @@ const getPoints = async (req, res) => {
   try {
     const user = req.user;
     const points = [user.points];
-    console.log(points)
     res.status(200).send(points);
   } catch (error) {
 
