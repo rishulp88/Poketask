@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import auth from '../utils/auth';
-import apiService from './../apiService';
+import auth from '../auth';
+
+import apiService from '../apiService'
 import { useNavigate, Link } from 'react-router-dom';
 import './register-page.css';
 

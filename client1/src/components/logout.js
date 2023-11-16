@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from '../utils/auth';
+import auth from '../auth';
 import apiService from './../apiService';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';

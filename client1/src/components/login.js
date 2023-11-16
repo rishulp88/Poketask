@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import auth from '../../../../Poketask/client/src/utils/auth';
-import apiService from '../../../../Poketask/client/src/apiService';
+import auth from '../auth';
+import apiService from '../apiService';
 import { useNavigate } from 'react-router-dom';
 
 const initialState = {
