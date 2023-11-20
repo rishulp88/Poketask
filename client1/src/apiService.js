@@ -117,6 +117,7 @@ apiService.getUserPoints = async () => {
     headers: {'Content-Type': 'application/json'},
   })
     .then((res) => {
+      
       return res.json();
     })
       .catch((err) => console.log('api error profile ' ,err));

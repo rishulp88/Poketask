@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import auth from '../utils/auth';
-import apiService from './../apiService';
+import auth from '../auth';
+
+import apiService from '../apiService'
 import { useNavigate, Link } from 'react-router-dom';
 import './register-page.css';
 
@@ -28,7 +29,9 @@ const Register = (props) => {
 
     const { firstName, email, password } = state;
     const user = { firstName, email, password };
+    console.log(user)
     const res = await apiService.register(user);
+    
     if (res.error) {
 
       alert(`${res.message}`);

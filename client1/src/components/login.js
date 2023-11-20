@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import auth from '../../../../Poketask/client/src/utils/auth';
-import apiService from '../../../../Poketask/client/src/apiService';
+import auth from '../auth';
+import apiService from '../apiService';
 import { useNavigate } from 'react-router-dom';
 
 const initialState = {
@@ -22,10 +22,14 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const { email, password } = state;
     const user = { email, password };
+    
     const res = await apiService.login(user);
+ 
     if (res.error){
+      
       alert(`${res.message}`);
       setState(initialState);
     } else {

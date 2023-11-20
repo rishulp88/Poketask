@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import auth from './utils/auth';
+import auth from './auth';
 import Dashboard from './components/dashboard';
 
 

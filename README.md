@@ -6,3 +6,10 @@
 4- in client/src folder run npm start
 
 This app uses: express, mongoDB/mongoose, and React
+
+
+  "scripts": {
+    "test": "jest",
+    "start": "tsc && node dist/index.js"
+    ///"test": "echo \"Error: no test specified\" && exit 1"
+  },

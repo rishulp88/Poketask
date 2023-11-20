@@ -19,7 +19,9 @@ export default function Points( {points, setPoints, tasks, setTasks} ){
   useEffect(() => {
     const getPoints = async () => {
       const userPoints = await apiService.getUserPoints();
+      
       const newPoints = Object.values(userPoints);
+     
       return newPoints;
     };
     getPoints()
